@@ -43,11 +43,21 @@ def shared_motif(dna_list):
 
 
 def get_edges(dna_dict):
-    walls = []
-    # seperate dict into keys and values
-    # check if first three letters of any values correspond to last three letters of any others
-    # if they do, pair corresponding keys and append to walls
-    return walls
+    dna_List = []
+    k_v = len(dna_dict)
+    keys = list(dna_dict.keys())
+    values = list(dna_dict.values()) # seperate dict into keys and values
+    
+    for dna_val in range (k_v):
+        for dna_val2 in range (k_v): # check if first three letters of any values correspond to last three letters of any others
+            
+            if values[dna_val][4:] == values[dna_val2][:3]:
+                if dna_val != dna_val2:
+                    k = (keys[dna_val],keys[dna_val2])
+                    dna_List.append(k)  # if they do, pair corresponding keys and append to dna_List
+    return dna_List
+
+print(get_edges(dna_dict))
 
 
 def assemble_genome_in_order(dna_list):
